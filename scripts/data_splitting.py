@@ -43,8 +43,8 @@ batch_01.to_csv(f"{batch_01_output_path}/olist_orders_dataset.csv", index=False)
 batch_02.to_csv(f"{batch_02_output_path}/olist_orders_dataset.csv", index=False)
 
 order_items_b01.to_csv(f"{batch_01_output_path}/olist_order_items_dataset.csv", index=False)
-order_items_b02.to_csv(f"{batch_02_output_path}/olist_order_items_dataset", index=False)
+order_items_b02.to_csv(f"{batch_02_output_path}/olist_order_items_dataset.csv", index=False)
 
-order_payments_b01.to_csv(f"{batch_01_output_path}/olist_order_payments_dataset", index=False)
-order_payments_b02.to_csv(f"{batch_02_output_path}/olist_order_payments_dataset", index=False)
+order_payments_b01.to_csv(f"{batch_01_output_path}/olist_order_payments_dataset.csv", index=False)
+order_payments_b02.to_csv(f"{batch_02_output_path}/olist_order_payments_dataset.csv", index=False)
 
