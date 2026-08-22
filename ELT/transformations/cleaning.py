@@ -19,4 +19,5 @@ def deduplicate_silver(df, pk_columns, orderBy_columns):
                     .filter(col("row_number") == 1)
                     .drop("row_number"))
 
-    return deduped_df  
+    return deduped_df 
+
