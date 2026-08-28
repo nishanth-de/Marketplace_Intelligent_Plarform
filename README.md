@@ -5,13 +5,13 @@ A reliable data intelligent platform for a Marketplace company that supports dat
 ### Why do we need a data platform for a marketplace?
 ```
 Customer churns
-    → fewer orders placed
-        → seller GMV on Olist drops
-            → seller sees poor ROI on their Olist subscription
-                → seller churns
-                    → fewer products on platform
-                        → remaining customers have less selection
-                            → more customers churn
+    -> fewer orders placed
+        -> seller GMV on Olist drops
+            -> seller sees poor ROI on their Olist subscription
+                -> seller churns
+                    -> fewer products on platform
+                        -> remaining customers have less selection
+                            -> more customers churn
 
 NOTE: 
 This is a demand-supply death spiral.
