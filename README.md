@@ -1,8 +1,16 @@
-# Marketplace_Intelligent_Plarform
+# Marketplace Intelligent Plarform
 A reliable data intelligent platform for a Marketplace company that supports data driven decision making.
 
+---
 
-### Why do we need a data platform for a marketplace?
+# Overview
+Marketplace businesses depend on healthy interactions between customers, sellers, orders, payments, and delivery operations. Poor delivery performance or declining seller activity can affect customer experience, marketplace demand, and seller retention.
+
+This project simulates the data platform of an e-commerce marketplace. It transforms operational datasets into validated analytical models that support marketplace performance measurement and seller-level operational analysis.
+
+The primary engineering objective is to build a reproducible data pipeline with explicit data-quality rules, well-defined analytical models, and trustworthy business metrics.
+
+## Example scenario:
 ```
 Customer churns
     -> fewer orders placed
@@ -20,31 +28,24 @@ One side leaving accelerates the other side leaving.
 ```
 A **data platform gives a Marketplace enough lead time to intervene before the spiral starts**. By the time churn is visible in revenue, you're already 2-3 months into the problem. An analytics platform surfaces it earlier.
 
-# Business problem: 
-This project simulates the data platform of an e-commerce marketplace. The marketplace has orders, customers, sellers, products, payments and reviews operational datasets. 
-- **The business wants to understand four things:**
-    - how the marketplace is performing?
-    - Is the revenue per transaction growing, flat, or degrading over time?
-    - whether delivery performance is damaging the customer experience?
-    - which sellers may be contributing to poor delivery outcomes?
-
-- The challenge isn't simply storing the CSV files. The challenge is turning multiple operational datasets into a reliable analytical model that business users can use to measure marketplace performance.
-
-
+---
 
 # Business questions:
-- How much revenue and order volume does the marketplace generate? 
-- What is the average order value? 
-- Which sellers are inactive, at risk, or potentially churned? 
+**The Platform is designed to answer:**
+- How do order volume and marketplace transaction value change over time? 
+- What is the average order value under a clearly defined business rule?
+- Which sellers show declining activity or potential inactivity?
 - Which sellers appear to contribute to poor delivery performance?
 - What percentage of orders arrive on time? 
-- How much time do sellers take to hand orders to carriers? 
-- How much time is spent in carrier transit?
+- How long does it take for sellers to hand orders to carriers?
+- How long do orders spend in transit?
 
+---
 
-# *Architecture*
-![image_1787460438353.png](./image_1787460438353.png "image_1787460438353.png")
+# Architecture
+![Project Screenshot](/Workspace/Users/nishanthganesh851@gmail.com/Marketplace_Intelligent_Plarform/Marketplace Dataplatform Image.png)
 
+---
 # Future enhancements:
 ### Ingestion reliability:
 - Incremental ingestion

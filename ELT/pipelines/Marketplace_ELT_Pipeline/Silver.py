@@ -7,9 +7,7 @@ from pyspark.sql.functions import col, trim, lower, initcap, upper, coalesce
 def silver_orders():
 
     return (
-        spark.read.table(
-            "dev_catalog.bronze_operational.bronze_orders"
-        )
+        spark.read.table("dev_catalog.bronze_operational.bronze_orders")
         .withColumn(
             "order_status",
             lower(trim(col("order_status")))
@@ -29,15 +27,11 @@ def silver_orders():
     )
 
 
-@dp.materialized_view(
-    name="dev_catalog.silver_clean.silver_customers"
-)
+@dp.materialized_view(name="dev_catalog.silver_clean.silver_customers")
 def silver_customers():
 
     return (
-        spark.read.table(
-            "dev_catalog.bronze_operational.bronze_customers"
-        )
+        spark.read.table("dev_catalog.bronze_operational.bronze_customers")
         .withColumn(
             "customer_city",
             initcap(trim(col("customer_city")))
@@ -57,18 +51,12 @@ def silver_customers():
         )
     )
 
-@dp.materialized_view(
-    name="dev_catalog.silver_clean.silver_products"
-)
+@dp.materialized_view(name="dev_catalog.silver_clean.silver_products")
 def silver_products():
 
-    products = spark.read.table(
-        "dev_catalog.bronze_operational.bronze_products"
-    ).alias("p")
+    products = spark.read.table("dev_catalog.bronze_operational.bronze_products").alias("p")
 
-    translations = spark.read.table(
-        "dev_catalog.bronze_operational.bronze_product_category_translation"
-    ).alias("t")
+    translations = spark.read.table("dev_catalog.bronze_operational.bronze_product_category_translation").alias("t")
 
     return (
         products
@@ -104,9 +92,7 @@ def silver_products():
 def silver_order_items():
 
     return (
-        spark.read.table(
-            "dev_catalog.bronze_operational.bronze_order_items"
-        )
+        spark.read.table("dev_catalog.bronze_operational.bronze_order_items")
         .withColumn(
             "order_id",
             trim(col("order_id"))
@@ -137,9 +123,7 @@ def silver_order_items():
 def silver_order_payments():
 
     return (
-        spark.read.table(
-            "dev_catalog.bronze_operational.bronze_order_payments"
-        )
+        spark.read.table("dev_catalog.bronze_operational.bronze_order_payments")
         .withColumn(
             "order_id",
             trim(col("order_id"))
@@ -164,9 +148,7 @@ def silver_order_payments():
 def silver_order_reviews():
 
     return (
-        spark.read.table(
-            "dev_catalog.bronze_operational.bronze_order_reviews"
-        )
+        spark.read.table("dev_catalog.bronze_operational.bronze_order_reviews")
         .withColumn(
             "review_id",
             trim(col("review_id"))
@@ -200,9 +182,7 @@ def silver_order_reviews():
 def silver_sellers():
 
     return (
-        spark.read.table(
-            "dev_catalog.bronze_operational.bronze_sellers"
-        )
+        spark.read.table("dev_catalog.bronze_operational.bronze_sellers")
         .withColumn(
             "seller_id",
             trim(col("seller_id"))
@@ -229,9 +209,7 @@ def silver_sellers():
 def silver_geolocation():
 
     return (
-        spark.read.table(
-            "dev_catalog.bronze_operational.bronze_geolocation"
-        )
+        spark.read.table("dev_catalog.bronze_operational.bronze_geolocation")
         .withColumn(
             "geolocation_zip_code_prefix",
             trim(col("geolocation_zip_code_prefix"))
