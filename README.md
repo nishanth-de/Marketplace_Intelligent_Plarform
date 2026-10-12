@@ -43,7 +43,7 @@ A **data platform gives a Marketplace enough lead time to intervene before the s
 ---
 
 # Architecture
-![Project Screenshot](/Workspace/Users/nishanthganesh851@gmail.com/Marketplace_Intelligent_Plarform/Marketplace Dataplatform Image.png)
+![Project Screenshot](Marketplace Dataplatform Image.png)
 
 ---
 # Future enhancements:
