@@ -4,6 +4,10 @@ from pyspark.sql.functions import col, trim, lower, initcap, upper, coalesce
 
 
 @dp.materialized_view(name="dev_catalog.silver_clean.silver_orders")
+@dp.expect_or_drop("valid_status", "order_status IS NOT NULL")
+@dp.expect_or_fail("valid_order_id", "order_id IS NOT NULL")
+@dp.expect_or_fail("valid_customer_id", "customer_id IS NOT NULL")
+@dp.expect_or_drop("valid_timestamp", "order_purchase_timestamp IS NOT NULL")
 def silver_orders():
 
     return (
@@ -28,6 +32,8 @@ def silver_orders():
 
 
 @dp.materialized_view(name="dev_catalog.silver_clean.silver_customers")
+@dp.expect_or_fail("valid_customer_id", "customer_id IS NOT NULL")
+@dp.expect_or_drop("valid_customer_unique_id", "customer_id IS NOT NULL")
 def silver_customers():
 
     return (
@@ -52,6 +58,7 @@ def silver_customers():
     )
 
 @dp.materialized_view(name="dev_catalog.silver_clean.silver_products")
+@dp.expect_or_fail("valid_product_id", "product_id IS NOT NULL")
 def silver_products():
 
     products = spark.read.table("dev_catalog.bronze_operational.bronze_products").alias("p")
@@ -89,6 +96,9 @@ def silver_products():
 
 
 @dp.materialized_view(name="dev_catalog.silver_clean.silver_order_items")
+@dp.expect_or_fail("valid_order_item_id", "order_item_id IS NOT NULL")
+@dp.expect_or_fail("valid_order_id", "order_id IS NOT NULL")
+@dp.expect_or_fail("valid_product_id", "product_id IS NOT NULL")
 def silver_order_items():
 
     return (
@@ -120,6 +130,8 @@ def silver_order_items():
 
 
 @dp.materialized_view(name="dev_catalog.silver_clean.silver_order_payments")
+@dp.expect_or_fail("valid_order_id", "order_id IS NOT NULL")
+@dp.expect_or_drop("valid_payment", "payment_value < 0.00")
 def silver_order_payments():
 
     return (
@@ -145,6 +157,8 @@ def silver_order_payments():
 
 
 @dp.materialized_view(name="dev_catalog.silver_clean.silver_order_reviews")
+@dp.expect_or_fail("valid_order_id", "order_id IS NOT NULL")
+@dp.expect_or_fail("valid_review_id", "review_id IS NOT NULL")
 def silver_order_reviews():
 
     return (
@@ -179,6 +193,7 @@ def silver_order_reviews():
     )
 
 @dp.materialized_view(name="dev_catalog.silver_clean.silver_sellers")
+@dp.expect_or_fail("valid_seller_id", "seller_id IS NOT NULL")
 def silver_sellers():
 
     return (
